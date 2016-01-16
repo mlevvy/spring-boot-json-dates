@@ -20,10 +20,14 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void dateTimeFormatterTest() {
-        ResponseEntity<Clock> response = sut.getForEntity("http://localhost:8080/clock", Clock.class);
+        Clock c = new Clock();
 
-        assertEquals(OK, response.getStatusCode());
-        assertEquals("Hello", response.getBody().getHello());
+        ResponseEntity<Clock> resp = sut.getForEntity("http://localhost:8080/clock", Clock.class);
+
+        assertEquals(OK, resp.getStatusCode());
+        assertEquals(c.getLocalDate(), resp.getBody().getLocalDate());
+        assertEquals(c.getLocalTime(), resp.getBody().getLocalTime());
+        assertEquals(c.getLocalDateTime(), resp.getBody().getLocalDateTime());
     }
 
 }
