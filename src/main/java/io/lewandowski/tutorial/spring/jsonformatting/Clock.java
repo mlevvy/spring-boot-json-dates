@@ -1,8 +1,5 @@
 package io.lewandowski.tutorial.spring.jsonformatting;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,10 +8,8 @@ import java.time.ZonedDateTime;
 
 public final class Clock {
 
-    @JsonFormat(pattern = "dd::MM::yyyy")
     private final LocalDate localDate;
 
-    @JsonFormat(pattern = "KK:mm a")
     private final LocalTime localTime;
 
     private final LocalDateTime localDateTime;

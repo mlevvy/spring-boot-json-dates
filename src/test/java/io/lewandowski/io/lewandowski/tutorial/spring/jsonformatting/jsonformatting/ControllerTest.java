@@ -2,6 +2,7 @@ package io.lewandowski.io.lewandowski.tutorial.spring.jsonformatting.jsonformatt
 
 import io.lewandowski.tutorial.spring.jsonformatting.Application;
 import io.lewandowski.tutorial.spring.jsonformatting.Clock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +13,12 @@ import org.testng.annotations.Test;
 import static org.springframework.http.HttpStatus.OK;
 import static org.testng.AssertJUnit.assertEquals;
 
-@SpringApplicationConfiguration(Application.class)
+@SpringApplicationConfiguration(classes = {Application.class, RestTemplateFactory.class})
 @WebIntegrationTest
 public class ControllerTest extends AbstractTestNGSpringContextTests {
 
-    private RestTemplate sut = new RestTemplate();
+    @Autowired
+    RestTemplate sut;
 
     @Test
     public void dateTimeFormatterTest() {
